@@ -22,13 +22,20 @@ const (
     countdownStart = 3
 )
 
-func Countdown(out io.Writer, sleep Sleeper) {
+func Countdown(out io.Writer, sleeper Sleeper) {
     for i := countdownStart; i >= 1; i-- {
-        sleep.Sleep()
+        sleeper.Sleep()
+    }
+
+    for i := countdownStart; i >= 1; i-- {
+        // sleeper.Sleep()
         fmt.Fprintln(out, i)
     }
-    fmt.Fprint(out, "Go!")
+
+    sleeper.Sleep()
+    fmt.Fprint(out, finalWord)
 }
+
 func main() {
     Countdown(os.Stdout, &DefaultSleeper{})
 }
