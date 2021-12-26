@@ -23,12 +23,9 @@ const (
 )
 
 func Countdown(out io.Writer, sleeper Sleeper) {
+    
     for i := countdownStart; i >= 1; i-- {
         sleeper.Sleep()
-    }
-
-    for i := countdownStart; i >= 1; i-- {
-        // sleeper.Sleep()
         fmt.Fprintln(out, i)
     }
 
